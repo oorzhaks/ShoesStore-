@@ -1,0 +1,40 @@
+﻿<Window x:Class="WpfApp9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp9"
+        mc:Ignorable="d"
+        Title="ООО Обувь - Авторизация" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#7FFF00" Margin="10" Padding="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="D:\РПИТПМ 2 лаба\WpfApp9\WpfApp9\Resources\Icon.png" Width="80" Height="80"/>
+                <TextBlock Text="Авторизация" FontSize="28" FontWeight="Bold"
+                   VerticalAlignment="Center" Margin="20,0,0,0"
+                   FontFamily="Times New Roman"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Логин" FontFamily="Times New Roman"/>
+            <TextBox x:Name="TbLogin" Width="250" Margin="0,5,0,10" FontFamily="Times New Roman"/>
+
+            <TextBlock Text="Пароль" FontFamily="Times New Roman"/>
+            <PasswordBox x:Name="PbPassword" Width="250" Margin="0,5,0,15" FontFamily="Times New Roman"/>
+
+            <Button Content="Войти" Width="250" Height="30"
+            Background="#00FA9A" FontFamily="Times New Roman"
+            Click="BtnLogin_Click"/>
+
+            <Button Content="Войти как гость" Width="250" Height="30" Margin="0,10,0,0"
+            Background="#7FFF00" FontFamily="Times New Roman"
+            Click="BtnGuest_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

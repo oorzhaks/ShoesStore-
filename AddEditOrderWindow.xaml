@@ -1,0 +1,86 @@
+﻿<Window x:Class="WpfApp9.AddEditOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp9"
+        mc:Ignorable="d"
+        Title="Добавление/Редактирование заказа" Height="500" Width="700"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Times New Roman" FontSize="14" Background="White"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#7FFF00" Padding="15" Margin="5">
+            <TextBlock Text="Управление заказом" FontSize="22"
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="55"/>
+            </Grid.RowDefinitions>
+
+            <!-- Артикул -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Артикул заказа"
+                       VerticalAlignment="Center"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtArticul" Height="25"
+                     Text="{Binding OrderNumber}"/>
+
+            <!-- Статус -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Статус заказа"
+                       VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="CmbStatus" Height="25"
+                      Text="{Binding OrderStatus}">
+                <ComboBoxItem Content="Новый"/>
+                <ComboBoxItem Content="В обработке"/>
+                <ComboBoxItem Content="Готов к выдаче"/>
+                <ComboBoxItem Content="Выдан"/>
+                <ComboBoxItem Content="Отменён"/>
+            </ComboBox>
+
+            <!-- Адрес пункта выдачи -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Адрес пункта выдачи"
+                       VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="2" Grid.Column="1" x:Name="CmbPickupPoint" Height="25"
+                      DisplayMemberPath="StreetHouse"
+                      SelectedValuePath="ID_PickupPoint"
+                      SelectedValue="{Binding ID_PickupPoint}"/>
+
+            <!-- Дата заказа -->
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Дата заказа"
+                       VerticalAlignment="Center"/>
+            <DatePicker Grid.Row="3" Grid.Column="1" x:Name="DpOrderDate" Height="25"
+                        SelectedDate="{Binding OrderDate}"/>
+
+            <!-- Дата доставки -->
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Дата доставки"
+                       VerticalAlignment="Center"/>
+            <DatePicker Grid.Row="4" Grid.Column="1" x:Name="DpDeliveryDate" Height="25"
+                        SelectedDate="{Binding DeluiveryDate}"/>
+
+            <!-- Кнопки -->
+            <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                        Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Сохранить данные" Width="160" Height="35"
+                        Margin="5" Click="Button_Click"/>
+                <Button x:Name="BtnDelete" Content="Удалить заказ" Width="160" Height="35"
+                        Margin="5" Click="BtnDelete_Click"
+                        Visibility="Collapsed"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
